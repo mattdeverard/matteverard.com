@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matt Everard</title>
+  <meta name="description" content="Pragmatist. Engineer who studied theology. Co-founder at Compounds.dev. Twenty-some jobs, two sons, four continents on a bicycle.">
+
+  <!-- Open Graph for link previews -->
+  <meta property="og:title" content="Matt Everard">
+  <meta property="og:description" content="Pragmatist. Engineer who studied theology. Co-founder at Compounds.dev.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://matteverard.com">
+
+  <!-- Favicon (inline SVG so no extra file needed) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2280%22 font-size=%2290%22 font-family=%22monospace%22 fill=%22%23222%22>m</text></svg>">
+
+  <!-- Fonts: Fraunces for serif display + body emphasis, JetBrains Mono for accents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --bg-secondary: #f3f0ea;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-tertiary: #999;
+      --accent: #8a3324;
+      --border: #e5e1d8;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
+      --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+
+      --max-width: 640px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1816;
+        --bg-secondary: #252320;
+        --text: #f0ede5;
+        --text-secondary: #b5b1a7;
+        --text-tertiary: #7a766e;
+        --accent: #d9846a;
+        --border: #35322d;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 0 4rem;
+    }
+
+    /* ---- Nav ---- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+      border-bottom: 0.5px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .prompt {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .prompt::after {
+      content: '_';
+      animation: blink 1.2s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to { visibility: hidden; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      margin-bottom: 4rem;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 6vw, 3rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+    }
+
+    .lede {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      font-variation-settings: "opsz" 30, "SOFT" 50;
+    }
+
+    .lede-sub {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ---- Sections ---- */
+    section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 2rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin-bottom: 0.75rem;
+      font-size: 0.975rem;
+      line-height: 1.7;
+    }
+
+    em {
+      font-style: italic;
+      color: var(--text);
+    }
+
+    a.inline-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+
+    a.inline-link:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ---- Timeline / two-column rows ---- */
+    .timeline {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1rem 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      padding-top: 2px;
+    }
+
+    .timeline-role {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    /* ---- Jobs callout ---- */
+    .jobs-list {
+      margin-bottom: 3.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .jobs-list-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .jobs-list-body {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* ---- Project cards ---- */
+    .project-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .project {
+      padding: 1rem 1.25rem;
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .project:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .project-name {
+      font-weight: 500;
+      font-size: 0.975rem;
+    }
+
+    .project-status {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.5px;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---- Off the clock ---- */
+    .off-clock-intro {
+      font-size: 0.975rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .off-clock-grid {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    /* ---- Contact ---- */
+    .contact-links {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a,
+    .contact-links span {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .footer-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-blogroll {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .footer-blogroll a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--border);
+    }
+
+    .footer-blogroll a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 540px) {
+      .timeline,
+      .off-clock-grid {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .timeline-date {
+        margin-bottom: 0.25rem;
+      }
+      .off-clock-grid > div:nth-child(odd) {
+        margin-bottom: 0.25rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ---- Subtle page-load reveal ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero, section, footer {
+      animation: fadeUp 0.5s ease-out backwards;
+    }
+
+    .hero { animation-delay: 0.05s; }
+    #about { animation-delay: 0.1s; }
+    #work { animation-delay: 0.15s; }
+    .jobs-list { animation-delay: 0.2s; animation: fadeUp 0.5s ease-out backwards; }
+    #writing { animation-delay: 0.25s; }
+    #projects { animation-delay: 0.3s; }
+    #elsewhere { animation-delay: 0.35s; }
+    #contact { animation-delay: 0.4s; }
+    footer { animation-delay: 0.45s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <span class="prompt">~/matt</span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
+        <a href="#projects">Projects</a>
+        <a href="#elsewhere">Elsewhere</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">CURRENTLY IN NASHVILLE</p>
+      <h1>Matt Everard</h1>
+      <p class="lede">Pragmatist. Engineer who studied theology. I've held twenty-some jobs, led global transformations at banks and pharma, raised two sons in Vancouver, and now build AI tools for software developers.</p>
+      <p class="lede-sub">Any job that involves customer engagement and creative problem-solving makes my tail wag.</p>
+    </header>
+
+    <section id="about">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>About</h2>
+      </div>
+      <p>Born in Palos Verdes, raised in Columbus. Went to Ohio State on a full Battelle scholarship and finished electrical engineering with a 4.5 GPA. My first real job was being the IT guy for the C-suite at Huntington National Bank, where I learned that executives only ever want to know two things from IT: <em>when will it be fixed</em>, and <em>how much will it cost</em>.</p>
+      <p>Engineering left no room for the bigger questions, so I went to grad school in Chicago for theology. Then back to Columbus, partner at a boutique consultancy, survived the dot-com bust, and in 2005 moved the family to Vancouver to raise our two sons near the mountains and the sea.</p>
+      <a href="/about" class="read-more">Read the whole story →</a>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Work</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-date">2025 –</div>
+        <div>
+          <div class="timeline-role">Compounds.dev</div>
+          <div class="timeline-desc">Co-founder. AI-native developer tools with Tom Boltman and Jason Montgomery.</div>
+        </div>
+
+        <div class="timeline-date">2024 –</div>
+        <div>
+          <div class="timeline-role">Fully Functioning AI</div>
+          <div class="timeline-desc">Co-founder. Consulting firm helping companies navigate AI and solve real problems with it.</div>
+        </div>
+
+        <div class="timeline-date">2018 – 24</div>
+        <div>
+          <div class="timeline-role">Independent advisor</div>
+          <div class="timeline-desc">Team and org performance work for Manulife, Genentech / Roche, UBS, and growth-stage firms.</div>
+        </div>
+
+        <div class="timeline-date">2014 – 17</div>
+        <div>
+          <div class="timeline-role">HSBC · India &amp; global</div>
+          <div class="timeline-desc">Built the first global agile program in Commercial Banking. Moved family to Pune to extend a board-level transformation across the bank.</div>
+        </div>
+
+        <div class="timeline-date">2008 – 12</div>
+        <div>
+          <div class="timeline-role">Pacific Blue Cross</div>
+          <div class="timeline-desc">Led 50+ people on a 120-consultant, $100M program off the mainframe.</div>
+        </div>
+
+        <div class="timeline-date">earlier</div>
+        <div>
+          <div class="timeline-desc">ATGi (boutique consultancy, partner) · Huntington Bank · twenty-some other jobs along the way.</div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="jobs-list">
+      <p class="jobs-list-label">A PARTIAL LIST OF JOBS I'VE HELD</p>
+      <p class="jobs-list-body">paperboy · concessionaire · salesman · dishwasher · line cook · waiter · busboy · bartender · database architect · university instructor · campus pastor · coach · project manager · transformation leader · global executive · co-founder</p>
+    </aside>
+
+    <section id="writing">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Writing</h2>
+      </div>
+      <p style="color: var(--text-secondary); font-style: italic;">First posts coming soon. Check back, or <a href="#contact" class="inline-link">subscribe via email</a> and I'll let you know when they land.</p>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="project-grid">
+        <a href="https://compounds.dev" style="text-decoration: none; color: inherit;">
+          <div class="project">
+            <div class="project-head">
+              <div class="project-name">Compounds.dev</div>
+              <div class="project-status">ACTIVE</div>
+            </div>
+            <div class="project-desc">Persistent context, task tracking, and architectural grounding for AI coding agents. VS Code extension that works alongside Claude Code, Cursor, and Codex.</div>
+          </div>
+        </a>
+
+        <a href="https://fullyfunctioning.ai" style="text-decoration: none; color: inherit;">
+          <div class="project">
+            <div class="project-head">
+              <div class="project-name">Fully Functioning AI</div>
+              <div class="project-status">ACTIVE</div>
+            </div>
+            <div class="project-desc">Helping companies cut through AI hype and solve real problems. Case studies at fullyfunctioning.ai.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="elsewhere">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2>Off the clock</h2>
+      </div>
+
+      <p class="off-clock-intro">I do my best thinking moving — on a bike, under a barbell, or up a mountain on skins.</p>
+
+      <div class="off-clock-grid">
+        <div class="timeline-date">since 2006</div>
+        <div>
+          <div class="timeline-role">Backcountry skiing</div>
+          <div class="timeline-desc">Started in the BC Coast Range. Earning turns is still my favorite kind of suffering.</div>
+        </div>
+
+        <div class="timeline-date">since 2018</div>
+        <div>
+          <div class="timeline-role">Self-supported cycle touring</div>
+          <div class="timeline-desc">Bangkok to Malaysia · Da Nang to Ho Chi Minh City · Medellín to Cartagena · the SW coast of Costa Rica into Corcovado.</div>
+        </div>
+
+        <div class="timeline-date">currently</div>
+        <div>
+          <div class="timeline-role">Powerlifting</div>
+          <div class="timeline-desc">Benched 340 lb in May 2026. Working toward 405.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2>Get in touch</h2>
+      </div>
+      <p>I'm easy to reach. Email is best — and if our paths might cross, I'm always up for coffee.</p>
+      <div class="contact-links">
+        <a href="mailto:matt@matteverard.com">→ matt@matteverard.com</a>
+        <a href="https://www.linkedin.com/in/matt-everard" target="_blank" rel="noopener">→ LinkedIn</a>
+        <a href="https://github.com/matteverard" target="_blank" rel="noopener">→ GitHub</a>
+      </div>
+    </section>
+
+    <footer>
+      <p class="footer-label">SITES I READ</p>
+      <p class="footer-blogroll">
+        <a href="https://kottke.org" target="_blank" rel="noopener">kottke.org</a>
+        &nbsp;·&nbsp;
+        <a href="https://craigmod.com" target="_blank" rel="noopener">craigmod.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://daringfireball.net" target="_blank" rel="noopener">daring fireball</a>
+      </p>
+      <div class="footer-meta">
+        <span>© 2026 Matt Everard</span>
+        <span>last updated 2026.05.27</span>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
