@@ -126,6 +126,33 @@
       margin-bottom: 4rem;
     }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .hero-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .hero-avatar {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
     .eyebrow {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -460,10 +487,15 @@
     </nav>
 
     <header class="hero">
-      <p class="eyebrow">CURRENTLY IN NASHVILLE</p>
-      <h1>Matt Everard</h1>
-      <p class="lede">Pragmatist. Engineer who studied theology. I've held twenty-some jobs, led global transformations at banks and pharma, raised two sons in Vancouver, and now build AI tools for product engineers.</p>
-      <p class="lede-sub">Any job that involves customer engagement and creative problem-solving makes my tail wag.</p>
+      <div class="hero-grid">
+        <img class="hero-avatar" src="matt_headshot_front_masked.png" alt="Portrait of Matt Everard" width="140" height="140">
+        <div>
+          <p class="eyebrow">CURRENTLY IN NASHVILLE</p>
+          <h1>Matt Everard</h1>
+          <p class="lede">Pragmatist. Engineer who studied theology. I've held twenty-some jobs, led global transformations at banks and pharma, raised two sons in Vancouver, and now build AI tools for product engineers.</p>
+          <p class="lede-sub">Any job that involves customer engagement and creative problem-solving makes my tail wag.</p>
+        </div>
+      </div>
     </header>
 
     <section id="about">
@@ -602,17 +634,9 @@
     </section>
 
     <footer>
-      <p class="footer-label">SITES I READ</p>
-      <p class="footer-blogroll">
-        <a href="https://kottke.org" target="_blank" rel="noopener">kottke.org</a>
-        &nbsp;·&nbsp;
-        <a href="https://craigmod.com" target="_blank" rel="noopener">craigmod.com</a>
-        &nbsp;·&nbsp;
-        <a href="https://daringfireball.net" target="_blank" rel="noopener">daring fireball</a>
-      </p>
       <div class="footer-meta">
         <span>© 2026 Matt Everard</span>
-        <span>last updated 2026.05.27</span>
+        <span>last updated 2026.05.29</span>
       </div>
     </footer>
 
