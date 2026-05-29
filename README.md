@@ -1,4 +1,4 @@
-# matteverard.com
+# matteverard.org
 
 A single-file static personal site. No build step, no framework, no dependencies. Edit `index.html` directly.
 
@@ -34,11 +34,11 @@ Pick whichever you like. All three are free, fast, and connect to a custom domai
 
 ## Custom domain
 
-Point `matteverard.com` (and `www.matteverard.com`) at your host's nameservers or A/CNAME records. Each host has a one-page guide. Use Cloudflare in front for free HTTPS + CDN if you want.
+Point `matteverard.org` (and `www.matteverard.org`) at your host's nameservers or A/CNAME records. Each host has a one-page guide. Use Cloudflare in front for free HTTPS + CDN if you want.
 
 ## What to update before you ship
 
-- [ ] Email address (currently `matt@matteverard.com` — change if different)
+- [ ] Email address (currently `matt@matteverard.org` — change if different)
 - [ ] LinkedIn URL (currently `linkedin.com/in/matt-everard` — placeholder)
 - [ ] GitHub URL (currently `github.com/matteverard` — placeholder)
 - [ ] First real blog post (the Writing section currently says "coming soon")
